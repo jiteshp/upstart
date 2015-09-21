@@ -1,0 +1,130 @@
+//
+//	Add Overlay
+//	----------------------------------------------------------------------------
+.add-overlay( @bg-color: #000, @opacity: 0.7 ) {
+	position: relative;
+	
+	& > * {
+		position: relative;
+	}
+	
+	&:before {
+		background-color: @bg-color;
+		content: '';
+		display: block;
+		height: 100%;
+		left: 0;
+		opacity: @opacity;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
+//
+//	Animate CSS properties
+//	----------------------------------------------------------------------------
+.animate( @property: all, @duration: 0.7s ) {
+	-webkit-transition: @property @duration;
+	   -moz-transition: @property @duration;
+	    -ms-transition: @property @duration;
+	     -o-transition: @property @duration;
+	
+	transition: @property @duration;
+}
+
+//
+//	Block element
+//	----------------------------------------------------------------------------
+.block-element( @margin-bottom ) {
+	display: block;
+	margin-bottom: @margin-bottom;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+//
+//	Clear floats
+//	----------------------------------------------------------------------------
+.clearfix() {
+	&:before, &:after {
+		content: ' ';
+		display: table;
+	}
+	
+	&:after {
+		clear: both;
+	}
+}
+
+//
+//	Generate grid columns
+//	----------------------------------------------------------------------------
+.generate-columns( @columns, @gutter, @screen, @i: 0 ) when ( @i =< @columns ) {
+	.col-@{screen}-@{i} {
+		float: left;
+		padding-left: @gutter / 2;
+		padding-right: @gutter / 2;
+		width: percentage( @i / @columns );
+	}
+	
+	.generate-columns( @columns, @gutter, @screen, ( @i + 1 ) );
+}
+
+.make-row( @grid-gutter-width ) {
+	.clearfix();
+	margin-left: @grid-gutter-width / -2;
+	margin-right: @grid-gutter-width / -2;
+}
+
+//
+//	Rounded corners
+//	----------------------------------------------------------------------------
+.rounded( @radius ) {
+	-webkit-border-radius: @radius;
+	   -moz-border-radius: @radius;
+	    
+	border-radius: @radius;
+}
+
+//
+//	Screen reader text
+//	----------------------------------------------------------------------------
+.screen-reader-text {
+	border: 0;	
+	clip: rect(0,0,0,0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+//
+//	Separate
+//	----------------------------------------------------------------------------
+.separate( @separator, @sidemargin ) {
+	&:before {
+		content: @separator;
+		margin-left: @sidemargin;
+		margin-right: @sidemargin;
+	}
+	
+	&:first-child:before {
+		content: '';
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+//
+//	Shadow
+//	----------------------------------------------------------------------------
+.shadow( @h, @v, @blur, @color ) {
+	-webkit-box-shadow: @h @v @blur @color;
+	-moz-box-shadow: @h @v @blur @color;
+	box-shadow: @h @v @blur @color;
+}

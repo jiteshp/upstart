@@ -1,0 +1,761 @@
+/*!
+ *	Theme Name:				Upstart Theme
+ *	Theme URI:				http://devamigo.com
+ *	Version:				1.0.0
+ *	Author:					Devamigo
+ *	Author URI:				http://devamigo.com
+ *	Description:			WordPress theme for small businesses.
+ *	
+ *	Github Theme URI: 		https://github.com/jiteshp/upstart
+ *
+ *	Copyright 2014 Devamigo
+ *	
+ *	Licensed under the Apache License, Version 2.0 (the "License");
+ *	you may not use this file except in compliance with the License.
+ *	You may obtain a copy of the License at
+ *	
+ *		http://www.apache.org/licenses/LICENSE-2.0
+ *	
+ *	Unless required by applicable law or agreed to in writing, software
+ *	distributed under the License is distributed on an "AS IS" BASIS,
+ *	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *	See the License for the specific language governing permissions and
+ *	limitations under the License.
+ *	----------------------------------------------------------------------------
+ */
+ 
+@import 'reset.less';
+@import 'mixins.less';
+
+//
+//	Screen, grid & container variables
+//	----------------------------------------------------------------------------
+@screen-xs:					0;
+@screen-sm:					720px;
+@screen-md:					960px;
+
+@grid-columns:				12;
+@grid-gutter-width:			60px;
+
+@container-width:			960px;
+
+//
+//	Color variables
+//	----------------------------------------------------------------------------
+@accent-color:				#dc143c;
+@block-bg-color:			#f6f6f6;
+@body-bg-color:				#eee;
+@border-color:				#eee;
+@input-border-color:		#ccc;
+@text-color:				#000;
+@meta-text-color:			#999;
+
+//
+//	Typographic variables
+//	----------------------------------------------------------------------------
+@code-font:					'Courier New', monospace;
+@text-font:					'Gentium Book Basic', serif;
+@header-text-font:			'Open Sans', serif;
+
+@base-font-size:			16px;
+@base-line-height:			26px;
+
+@h1-font-size:				@base-font-size * 2;
+@h2-font-size:				@base-font-size * 1.5;
+@h3-font-size:				@base-font-size * 1.17;
+@h4-font-size:				@base-font-size;
+@h5-font-size:				@base-font-size * 0.83;
+@h6-font-size:				@base-font-size * 0.75;
+
+@small-font-size:			@base-font-size * 0.83;
+@big-font-size:				@base-font-size * 1.17;
+
+//
+//	Input element variables
+//	----------------------------------------------------------------------------
+@input-height:				@base-line-height * 2;
+@input-border-radius:		5px;
+@input-border-width:		1px;
+@input-padding:				( @input-height / 2 - @base-line-height / 2 - @input-border-width );
+
+//
+//	Typographic styles
+//	----------------------------------------------------------------------------
+body, input, select, textarea {
+	color: @text-color;
+	font-family: @text-font;
+	font-size: @base-font-size;
+	line-height: @base-line-height;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+a {
+	.animate();
+	border-bottom: solid 1px transparent;
+	color: @accent-color;
+	text-decoration: none;
+	
+	&:hover {
+		border-bottom-color: @accent-color;
+	}
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	font-family: @header-text-font;
+}
+
+h1, .h1 {
+	font-size: @h1-font-size;
+	line-height: 1.25;
+	margin-bottom: @base-line-height * 2 - @h1-font-size * 1.25;
+	
+	a {
+		border: 0;
+		color: @text-color;
+		
+		&:hover {
+			color: @accent-color;
+		}
+	}
+}
+
+h2, .h2 {
+	font-size: @h2-font-size;
+	line-height: 1.25;
+	margin-bottom: @base-line-height * 2 - @h2-font-size * 1.25;
+}
+
+h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	margin-bottom: @base-line-height / 2;
+	font-weight: bold;
+}
+
+h3, .h3 { font-size: @h3-font-size; }
+h4, .h4 { font-size: @h4-font-size; }
+h5, .h5 { font-size: @h5-font-size; }
+h6, .h6 { font-size: @h6-font-size; }
+h6, .h6 { font-size: @h6-font-size; }
+
+address, blockquote, hr, ol, p, pre, ul {
+	margin-bottom: @base-line-height;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+blockquote, pre {
+	background-color: @block-bg-color;
+	padding: @base-line-height;
+}
+
+blockquote {
+	border-left: solid 1px @accent-color;
+	
+	cite {
+		display: block;
+		font-family: @header-text-font;
+	}
+}
+
+code, pre {
+	font-family: @code-font;
+}
+
+small {
+	font-size: @small-font-size;
+}
+
+big {
+	font-size: @big-font-size;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-style: bold;
+}
+
+//
+//	Input element styles
+//	----------------------------------------------------------------------------
+input, select, textarea {
+	border: solid 1px @input-border-color;
+	display: block;
+	padding: @input-padding 1em;
+	width: 100%;
+}
+
+input[type=submit], .btn {
+	.animate();
+	.rounded( @input-border-radius );
+	background-color: @accent-color;
+	border: solid 1px @accent-color;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-family: @header-text-font;
+	font-weight: bold;
+	padding: @input-padding 2em;
+	width: auto;
+	
+	&:hover {
+		background-color: @text-color;
+		border-color: @text-color;
+	}
+	
+	#sidebar .search-form & {
+		display: none;
+	}
+	
+	&.btn-white {
+		background-color: white;
+		border-color: white;
+		color: @accent-color;
+		
+		&:hover {
+			background-color: @accent-color;
+			border-color: @accent-color;
+			color: white;
+		}
+	}
+	
+	&.btn-min {
+		background-color: transparent;
+		color: @accent-color;
+		
+		&:hover {
+			background-color: @accent-color;
+			border-color: @accent-color;
+			color: white;
+		}
+	}
+	
+	&.btn-min-white {
+		background-color: transparent;
+		border-color: white;
+		color: white;
+		
+		&:hover {
+			background-color: white;
+			border-color: white;
+			color: @accent-color;
+		}
+	}
+}
+
+label {
+	color: @meta-text-color;
+}
+
+textarea {
+	height: @input-height * 3;
+}
+
+//
+//	Common class styles
+//	----------------------------------------------------------------------------
+.aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: @grid-gutter-width / 2;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: @grid-gutter-width / 2;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+//
+//	Layout styles
+//	----------------------------------------------------------------------------
+body {
+	background-color: @body-bg-color;
+}
+
+.outer-container {
+	margin: 0 auto;
+	max-width: @container-width + @grid-gutter-width;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: @container-width;
+}
+
+#site-header, #site-content, #site-footer {
+	background-color: white;
+}
+
+.clr {
+	.clearfix();
+}
+
+.row {
+	.make-row( @grid-gutter-width );
+}
+
+@media( min-width: @screen-xs ) {
+	.generate-columns( @grid-columns, @grid-gutter-width, xs );
+}
+
+@media( min-width: @screen-sm ) {
+	.generate-columns( @grid-columns, @grid-gutter-width, sm );
+}
+
+@media( min-width: @screen-md ) {
+	.generate-columns( @grid-columns, @grid-gutter-width, md );
+}
+
+.col-right {
+	float: right;
+}
+
+.col-xs-12 {
+	margin-bottom: @base-line-height;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+	
+	@media( min-width: @screen-md ) {
+		margin-bottom: 0;
+	}
+}
+
+//
+//	Top CTA styles
+//	----------------------------------------------------------------------------
+#top-cta {
+	padding-bottom: @base-line-height / 2;
+	padding-top: @base-line-height / 2;
+	text-align: center;
+}
+
+//
+//	Site header styles
+//	----------------------------------------------------------------------------
+#site-header {
+	border-bottom: solid 1px @border-color;
+	position: relative;
+}
+
+#site-title {
+	line-height: @base-line-height * 4;
+	margin-bottom: 0;
+	text-align: center;
+	
+	@media( min-width: @screen-md ) {
+		text-align: left;
+	}
+	
+	a, img {
+		display: block;
+		float: left;
+	}
+}
+
+#primary-nav {
+	text-align: center;
+	
+	@media( min-width: @screen-md ) {
+		margin-top: @base-line-height * 1.5;
+		text-align: right;
+	}
+	
+	li {
+		border-top: dotted 1px @border-color;
+		
+		@media( min-width: @screen-md ) {
+			border: 0;
+			display: inline;
+			margin-left: @grid-gutter-width / 2;
+		}
+	}
+	
+	a {
+		display: block;
+		padding: ( @base-line-height / 2 ) 0;
+		text-align: left;
+		
+		@media( min-width: @screen-md ) {
+			display: inline;
+			padding: 0;
+		}
+	}
+	
+	#nav-toggle {
+		border: 0;
+		font-size: 18px;
+		position: absolute;
+		right: @grid-gutter-width / 2;
+		text-align: center;
+		top: @base-line-height;
+		
+		@media( min-width: @screen-md ) {
+			display: none;
+		}
+	}
+	
+	.menu {
+		display: none;
+
+		@media( min-width: @screen-md ) {
+			display: block;
+		}
+	}
+	
+	.current-menu-item, .current_page_item {
+		& > a {
+			border-color: transparent;
+			color: @text-color;
+			cursor: text;
+		}
+	}
+}
+
+//
+//	Site footer styles
+//	----------------------------------------------------------------------------
+#site-footer {
+	border-top: solid 1px @border-color;
+	padding-bottom: @base-line-height;
+	padding-top: @base-line-height;
+	text-align: center;
+	
+	span {
+		.separate( '/', 10px );
+	}
+}
+
+//
+//	Site content styles
+//	----------------------------------------------------------------------------
+#site-content {
+	.entry, .entry-comments, .widget {
+		border-bottom: solid 1px @border-color;
+		padding-bottom: @base-line-height * 1.5;
+		padding-top: @base-line-height * 1.5;
+		
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+}
+
+.full-width {
+	#main {
+		width: 100%;
+	}
+	
+	.entry-header {
+		text-align: center;
+	}
+}
+
+//
+//	Entry styles
+//	----------------------------------------------------------------------------
+.entry-meta {
+	color: @meta-text-color;
+	margin-bottom: @base-line-height / 2;
+	
+	span {
+		.separate( '/', 5px );
+	}
+	
+	a {
+		border: 0;
+		color: @meta-text-color;
+		
+		&:hover {
+			color: @accent-color;
+		}
+	}
+}
+
+.entry-content {
+	ol, ul {
+		margin-left: @grid-gutter-width;
+	}
+	
+	ol {
+		list-style: decimal;
+	}
+	
+	ul {
+		list-style: disc;
+	}
+}
+
+//
+//	Entry comment styles
+//	----------------------------------------------------------------------------
+.comment {
+	border-bottom: dotted 1px @border-color;
+	margin-bottom: @base-line-height;
+	padding-bottom: @base-line-height;
+	
+	.children & {
+		border-bottom: 0;
+		border-top: dotted 1px @border-color;
+		margin-bottom: 0;
+		margin-left: @grid-gutter-width;
+		margin-top: @base-line-height;
+		padding-bottom: 0;
+		padding-top: @base-line-height;
+	}
+}
+
+.comment-meta {
+	.clearfix();
+	margin-bottom: @base-line-height / 2;
+	
+	.avatar {
+		float: left;
+		margin-right: 15px;
+	}
+	
+	.comment-metadata {
+		color: @meta-text-color;
+		
+		a {
+			border: 0;
+			color: @meta-text-color;
+			cursor: text;
+		}
+	}
+}
+
+.comment-respond {
+	background-color: @block-bg-color;
+	padding: @base-line-height * 1.5;
+	
+	.comment & {
+		margin-top: @base-line-height;
+	}
+}
+
+.comment-reply-title {
+	small {
+		float: right;
+		font-family: @text-font;
+		font-weight: normal;
+	}
+}
+
+.form-submit {
+	margin-bottom: 0;
+}
+
+//
+//	Sidebar & widget styles
+//	----------------------------------------------------------------------------
+#sidebar {
+	border-top: solid 1px @border-color;
+	
+	@media( min-width: @screen-md ) {
+		border: 0;
+	}
+	
+	.widget-title, li {
+		border-bottom: dotted 1px @border-color;
+		margin-bottom: @base-line-height / 2;
+		padding-bottom: @base-line-height / 2;
+	}
+}
+
+//
+//	Page header styles
+//	----------------------------------------------------------------------------
+#page-header {
+	font-family: @text-font;
+	font-weight: normal;
+	padding-top: @base-line-height * 1.5;
+	
+	&:after {
+		border-bottom: solid 3px @text-color;
+		content: '';
+		display: block;
+		margin-top: @base-line-height;
+		max-width: @grid-gutter-width;
+	}
+}
+
+//
+//	Pagination
+//	----------------------------------------------------------------------------
+.pagination {
+	padding-bottom: @base-line-height * 1.5;
+	padding-top: @base-line-height * 1.5;
+	text-align: center;
+	
+	a {
+		border: 0;
+		
+		&:hover {
+			background-color: @input-border-color;
+		}
+	}
+	
+	.page-numbers {
+		.rounded( @input-border-radius );
+		background-color: @border-color;
+		display: inline-block;
+		height: @base-line-height * 1.5;
+		line-height: @base-line-height * 1.5;
+		width: @base-line-height * 1.5;
+		
+		&.current {
+			color: @text-color;
+		}
+	}
+	
+	.fa {
+		font-size: 14px;
+	}
+}
+
+//
+//	Feature & footer widgets
+//	----------------------------------------------------------------------------
+#feature-widgets, #footer-widgets {
+	.container {
+		padding-left: @grid-gutter-width / 2;
+		padding-right: @grid-gutter-width / 2;
+	}
+	
+	.widget {
+		background-color: white;
+		padding-bottom: @base-line-height * 1.5;
+		padding-top: @base-line-height * 1.5;
+	
+		&:nth-child( odd ) {
+			background-color: @border-color;
+		}
+	}
+}
+
+#feature-widgets {
+	border-bottom: solid 1px @border-color;
+	
+	.widget:first-child {
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	
+		.widget-title {
+			&:extend( .h1 );
+		}
+		
+		@media( min-width: @screen-md ) {
+			padding-bottom: @base-line-height * 3;
+			padding-top: @base-line-height * 3;
+		}
+	}
+}
+
+#footer-widgets {
+	border-top: solid 1px @border-color;
+}
+
+//
+//	WP Caption
+//	----------------------------------------------------------------------------
+.wp-caption {
+	background-color: @block-bg-color;
+	margin-bottom: @base-line-height;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+	
+	img {
+		.aligncenter;
+	}
+	
+	.wp-caption-text {
+		color: @meta-text-color;
+		font-style: italic;
+		text-align: center;
+		padding: ( @base-line-height / 2 ) 0;
+	}
+}
+
+//
+//	Gallery
+//	----------------------------------------------------------------------------
+.gallery {
+	.make-row( @grid-gutter-width );
+	margin-bottom: @base-line-height;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.gallery-item {
+	float: left;
+	padding: @grid-gutter-width / 2;
+	text-align: center;
+	width: 50%;
+	
+	.full-width & {
+		width: 33.334%;
+	}
+	
+	img {
+		.aligncenter;
+	}
+}
+
+.gallery-caption {
+	&:extend( .screen-reader-text );
+}
+
+//
+//	Contact form 7
+//	----------------------------------------------------------------------------
+.wpcf7 {
+	background-color: @block-bg-color;
+	padding: @base-line-height * 1.5;
+	
+	.screen-reader-response, .wpcf7-not-valid-tip {
+		&:extend( .screen-reader-text );
+	}
+	
+	.wpcf7-not-valid {
+		border-color: red;
+	}
+	
+	.ajax-loader {
+		margin-left: 10px;
+	}
+	
+	.wpcf7-display-none {
+		display: none;
+	}
+}
