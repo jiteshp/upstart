@@ -454,7 +454,7 @@ body {
 //	Site content styles
 //	----------------------------------------------------------------------------
 #site-content {
-	.entry, .entry-comments, .widget {
+	.entry, .entry-comments, .widget, #no-results {
 		border-bottom: solid 1px @border-color;
 		padding-bottom: @base-line-height * 1.5;
 		padding-top: @base-line-height * 1.5;
@@ -472,6 +472,15 @@ body {
 	
 	.entry-header {
 		text-align: center;
+	}
+}
+
+#main .search-form {
+	text-align: center;
+	
+	input {
+		display: inline;
+		width: auto;
 	}
 }
 
