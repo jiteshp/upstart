@@ -8,7 +8,9 @@ if( is_home() && ! is_front_page() ): ?>
 elseif( is_home() && is_front_page() ): ?>
 <header id="page-header">
 	<div class="container">
-		<p id="page-title">Recent blog posts</p>
+		<p id="page-title"><?php
+			echo apply_filter( 'upstart_blog_page_title', 'Recent posts' );
+		?></p>
 	</div>
 </header> <?php
 elseif( is_archive() ): ?>
