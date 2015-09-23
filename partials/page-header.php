@@ -9,7 +9,7 @@ elseif( is_home() && is_front_page() ): ?>
 <header id="page-header">
 	<div class="container">
 		<p id="page-title"><?php
-			echo apply_filter( 'upstart_blog_page_title', 'Recent posts' );
+			echo apply_filters( 'upstart_blog_page_title', 'Recent posts' );
 		?></p>
 	</div>
 </header> <?php
