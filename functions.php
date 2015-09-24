@@ -92,8 +92,8 @@ if( ! function_exists( 'upstart_widget_areas' ) ) {
 		register_sidebar( array(
 			'id'			=> 'upstart_footer_widgets',
 			'name'			=> 'Footer',
-			'before_widget' => '<aside class="widget"><div class="container">',
-			'after_widget'	=> '</div></aside>',
+			'before_widget' => '<aside class="widget">',
+			'after_widget'	=> '</aside>',
 			'before_title'	=> '<h2 class="widget-title">',
 			'after_title'	=> '</h2>',
 		) );

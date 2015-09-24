@@ -69,7 +69,9 @@ endif; ?>
 <?php
 if( is_active_sidebar( 'upstart_footer_widgets' ) ): ?>
 <div id="footer-widgets" class="outer-container">
-	<?php dynamic_sidebar( 'upstart_footer_widgets' ); ?>
+	<div class="container clr">
+		<?php dynamic_sidebar( 'upstart_footer_widgets' ); ?>
+	</div>
 </div> <?php
 endif; ?>
 
