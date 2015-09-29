@@ -413,6 +413,9 @@ a {
 a:hover { 
 	border-color: <?php _e( $accent_color ); ?>;
 }
+blockquote {
+	border-left-color: <?php _e( $accent_color ); ?>;
+}
 h1 a:hover, .h1 a:hover {
 	color: <?php _e( $accent_color ); ?>;
 }
