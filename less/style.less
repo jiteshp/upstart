@@ -387,7 +387,7 @@ body {
 	text-align: center;
 	
 	@media( min-width: @screen-md ) {
-		margin-top: @base-line-height;
+		margin-top: @base-line-height * 1.25;
 		text-align: right;
 	}
 	
@@ -464,6 +464,18 @@ body {
 						padding-left: 0;
 					}
 				}
+				
+				a {
+					@media( min-width: @screen-md ) {
+						border: 0;
+						margin: 0;
+						padding: ( @base-line-height / 2 ) ( @grid-gutter-width / 4 );
+						
+						&:hover {
+							background-color: @block-bg-color;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -471,11 +483,13 @@ body {
 	a {
 		display: block;
 		margin: 0 ( @grid-gutter-width / 4 );
+		outline: none;
 		padding: ( @base-line-height / 2 ) 0;
 		text-align: left;
 		
 		@media( min-width: @screen-md ) {
 			display: inline-block;
+			padding: ( @base-line-height / 4 ) 0;
 		}
 	}
 }
