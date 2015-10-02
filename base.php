@@ -34,7 +34,7 @@ endif; ?>
 			<?php
 			wp_nav_menu( array(
 				'container' 	 => false,
-				'depth' 	 	 => -1,
+				'depth' 	 	 => 2,
 				'theme_location' => 'upstart_primary_nav',
 			) ); ?>
 		</nav>

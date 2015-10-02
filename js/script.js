@@ -17,6 +17,8 @@
 		
 		// window resize
 		$( window ).resize( function() {
+			$( '#primary-nav .sub-menu' ).hide();
+			
 			if( $( window ).width() >= 960 ) {
 				$( '#primary-nav .menu' ).show();
 				$( '#nav-toggle' ).hide();
@@ -27,6 +29,12 @@
 					$( '#nav-toggle' ).show();
 				}
 			}
+		} );
+		
+		// sub menu toggle
+		$( '#primary-nav .menu-item-has-children > a' ).click( function( e ) {
+			$( this ).next( '.sub-menu' ).slideToggle();
+			e.preventDefault();
 		} );
 		
 		// madmimi form
