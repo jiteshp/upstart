@@ -451,3 +451,82 @@ endif; ?>
 	
 	add_action( 'wp_head', 'upstart_customizer_output' );
 }
+
+/**
+ *	Enable shortcodes in text widgets
+ *	----------------------------------------------------------------------------
+ */
+add_filter( 'widget_text', 'do_shortcode' );
+ 
+/**
+ *	Row shortcode
+ *	----------------------------------------------------------------------------
+ */
+if( ! function_exists( 'upstart_shortcode_row' ) ) {
+	function upstart_shortcode_row( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+			'class'	=> false,
+		), $atts ) );
+		
+		
+		$class = ( $class ) ? sanitize_html_class( $class ) : '';
+			
+		return sprintf( '<div class="row %1$s">%2$s</div>', 
+			$class, do_shortcode( $content ) );
+	}
+
+	add_shortcode( 'row', 'upstart_shortcode_row' );
+}
+
+/**
+ *	Column shortcode
+ *	----------------------------------------------------------------------------
+ */
+if( ! function_exists( 'upstart_shortcode_col' ) ) {
+	function upstart_shortcode_col( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+			'class'		=> false,
+			'span_md'	=> false,
+			'span_sm'	=> false,
+			'span_xs'	=> 12,
+		), $atts ) );
+		
+		
+		$class = ( $class ) ? ' ' . sanitize_html_class( $class ) : '';
+			
+		$span_xs = ( $span_xs && 1 <= $span_xs && 12 >= $span_xs )	? 
+			'col-xs-' . $span_xs : 'col-xs-12';
+		$span_sm = ( $span_sm && 1 <= $span_sm && 12 >= $span_sm )	? 
+			' col-sm-' . $span_sm : '';
+		$span_md = ( $span_md && 1 <= $span_md && 12 >= $span_md )	? 
+			' col-md-' . $span_md : '';
+			
+		return sprintf( '<div class="%1$s%2$s%3$s%4$s">%5$s</div>', 
+			$span_xs, $span_sm, $span_md, $class, do_shortcode( $content ) );
+	}
+
+	add_shortcode( 'col', 'upstart_shortcode_col' );
+}
+
+/**
+ *	Button shortcode
+ *	----------------------------------------------------------------------------
+ */
+if( ! function_exists( 'upstart_shortcode_btn' ) ) {
+	function upstart_shortcode_btn( $atts ) {
+		extract( shortcode_atts( array(
+			'title'	=> false,
+			'type'	=> false,
+			'url'	=> false,
+		), $atts ) );
+		
+		$title = ( $title ) ? esc_html( $title ) : 'Click Me!';
+		$type  = ( $type ) ? ' btn-' . sanitize_html_class( $type ) : '';
+		$url   = ( $url )   ? esc_url( $url ) : '#';
+		
+		return sprintf( '<a href="%3$s" class="btn %2$s">%1$s</a>',
+			$title, $type, $url );
+	}
+
+	add_shortcode( 'btn', 'upstart_shortcode_btn' );
+}
