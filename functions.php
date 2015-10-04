@@ -345,7 +345,7 @@ if( ! function_exists( 'upstart_excerpt_more' ) ) {
 if( ! function_exists( 'upstart_get_fonts_uri' ) ) {
 	function upstart_get_fonts_uri() {
 		$fonts = apply_filters( 'upstart_fonts', array(
-			'Open Sans:400,700',
+			'Open Sans',
 			'Gentium Book Basic:400,400italic,700',
 		) );
 		
